@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   frontend:
     image: nginx
@@ -20,8 +20,6 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.helpy
-    ports:
-      - "8080:8080"
     env_file: .env
     volumes:
       - rails-assets:/helpy/public
