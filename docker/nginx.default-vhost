@@ -1,0 +1,23 @@
+server {
+        listen       80 443;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        root /helpy/public;
+        passenger_enabled on;
+        rails_env production;
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        #error_page   500 502 503 504  /50x.html;
+
+        location ~ ^/(assets|images|javascripts|stylesheets|system)/ {
+                expires max;
+                add_header Cache-Control public;
+        }
+}

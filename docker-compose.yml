@@ -1,0 +1,37 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file: .env
+    volumes:
+      - rails-assets:/helpy/public
+    networks:
+      - front
+      - back
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file: .env
+    networks:
+      - back
+    volumes:
+      - helpy-postgresql:/var/lib/postgresql/data:Z
+
+volumes:
+  rails-assets:
+    driver: local
+  helpy-postgresql:
+    external: true
+
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
