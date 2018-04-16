@@ -57,6 +57,6 @@ RUN touch /helpy/log/production.log \
 
 VOLUME ${HELPY_HOME}/public
 
-COPY docker/runhelpy.sh $HELPY_HOME/runhelpy.sh
+COPY docker/runhelpy.sh ${HELPY_HOME}/runhelpy.sh
 
 CMD [ "./runhelpy.sh" ]

@@ -22,13 +22,11 @@ services:
     networks:
       - back
     volumes:
-      - helpy-postgresql:/var/lib/postgresql/data:Z
+      - ./postgres:/var/lib/postgresql/data
 
 volumes:
   rails-assets:
     driver: local
-  helpy-postgresql:
-    external: true
 
 networks:
   front:
