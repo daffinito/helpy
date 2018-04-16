@@ -198,4 +198,6 @@ group :production do
   gem 'unicorn'
 end
 
+gem 'tzinfo-data'
+
 ruby '>= 2.2', '< 3.0'
