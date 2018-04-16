@@ -1,5 +1,4 @@
 #Based on https://github.com/helpyio/helpy/wiki/Installing-Helpy-on-Ubuntu-16.04-using-Passenger-and-Nginx
-# FROM ruby:2.3.3  -- this would be a lot easier if I could do this
 FROM ubuntu:16.04
 
 ENV HELPY_USER=helpy \
