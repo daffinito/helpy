@@ -2,7 +2,7 @@
 set -e
 source /etc/profile.d/rvm.sh
 
-cmd="bundle exec rails server -e production -b localhost -p 3000"
+cmd="bundle exec unicorn -E production -c config/unicorn.rb"
 timer="5"
 
 # wait for postgres to be ready before preparing

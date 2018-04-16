@@ -14,19 +14,6 @@ RUN apt-get install -y dirmngr gnupg \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7 \
   && apt-get install -y apt-transport-https ca-certificates
 
-# Install Passenger + Nginx
-RUN echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list \ 
-  && apt-get update \
-  && apt-get install -y nginx-extras passenger
-
-# Set up passenger and start nginx
-ADD https://www.linode.com/docs/assets/660-init-deb.sh /etc/init.d/nginx
-RUN chmod 755 /etc/init.d/nginx
-RUN /usr/sbin/update-rc.d -f nginx defaults
-COPY docker/nginx.default-vhost /etc/nginx/sites-available/default
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-RUN service nginx start
-
 # add user
 RUN useradd ${HELPY_USER} \
   && mkdir -p ${HELPY_HOME} \ 

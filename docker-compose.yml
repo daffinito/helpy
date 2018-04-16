@@ -1,10 +1,27 @@
 version: '3'
 services:
-  web:
-    build: .
+  frontend:
+    image: nginx
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - rails-assets:/helpy/public
+      - ./docker/nginx-default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - front
+    depends_on:
+      - web
+      
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile.helpy
+    ports:
+      - "8080:8080"
     env_file: .env
     volumes:
       - rails-assets:/helpy/public
@@ -26,7 +43,6 @@ services:
 
 volumes:
   rails-assets:
-    driver: local
 
 networks:
   front:

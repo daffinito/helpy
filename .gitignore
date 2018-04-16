@@ -32,3 +32,4 @@ public/uploads
 # Docker stuff
 .env
 certs
+postgres
